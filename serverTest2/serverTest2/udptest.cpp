@@ -53,13 +53,19 @@ int main()
 	while (true)
 	{
 			str_len = recvfrom(sockServer, message, bufsize, 0, (SOCKADDR*)&tempClientAddr, &len);
-			if (SOCKET_ERROR != str_len || key < UserNum)
+			if (SOCKET_ERROR != str_len )
 			{
-				//std::map<SOCKADDR_IN, bool>::iterator it = strMap.end();
-				//strMap.insert(it, pair<SOCKADDR_IN, bool>(tempClientAddr, true));
-				printf("recv 读入玩家id： %d \n", key);
-				ClientAddrList[key] = tempClientAddr;
-				key++;
+				if (key == UserNum)
+				{
+
+				}
+				else {
+					//std::map<SOCKADDR_IN, bool>::iterator it = strMap.end();
+					//strMap.insert(it, pair<SOCKADDR_IN, bool>(tempClientAddr, true));
+					printf("recv 读入玩家id： %d \n", key);
+					ClientAddrList[key] = tempClientAddr;
+					key++;
+				}
 			}
 
 		for (int i = 0; i < UserNum; i++)
